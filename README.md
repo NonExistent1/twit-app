@@ -120,8 +120,9 @@ https://getbootstrap.com/docs/4.0/getting-started/introduction/
 | **Extra Credit** Full Heroku Deployment     |   **5**|
 
 ## Outside Resources Used
+https://forum.djangoproject.com/t/showing-method-not-allowed-get-users-logout/26044/2
 
-
+https://forum.djangoproject.com/t/cant-change-type-attribute-in-django-crispy-forms/10054/2
 
 ## Known Problems, Issues, And/Or Errors in the Program
 
