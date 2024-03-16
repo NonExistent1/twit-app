@@ -5,10 +5,15 @@
 {% block content %}
     {% if user.is_authenticated %}
         Hi {{user.username}}!
-        <form method="post" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <button class="btn btn-success ml-2" type="submit">Logout</button>
-        </form>
+        <br>
+        <div>
+            <a class="btn btn-primary" href="{% url 'twit_list' %}">View Tweeter Feed</a>
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button class="btn btn-success ml-2" type="submit">Logout</button>
+            </form>
+        </div>
+        
     {% else %}
         <p>You are not logged in</p>
         <a href="{% url 'login' %}">Login</a>
