@@ -41,8 +41,11 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="{% url 'home' %}">
-                                            Log Out
+                                        <a>
+                                            <form class="mb-0" method="post" action="{% url 'logout' %}">
+                                                {% csrf_token %}
+                                                <button class="dropdown-item" type="submit">Logout</button>
+                                            </form>
                                         </a>
                                     </li>
                                 </ul>

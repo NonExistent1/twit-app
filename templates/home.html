@@ -4,19 +4,26 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        Hi {{user.username}}!
-        <br>
-        <div>
-            <a class="btn btn-primary" href="{% url 'twit_list' %}">View Tweeter Feed</a>
-            <form method="post" action="{% url 'logout' %}">
-                {% csrf_token %}
-                <button class="btn btn-success ml-2" type="submit">Logout</button>
-            </form>
+        <div class="col-xs-1 text-center">
+            <h2>Hi {{user.username}}!<h2>
+            <div class="d-flex justify-content-center mb-4">
+                <div>
+                    <a class="btn btn-primary l2 m-2 mt-4" href="{% url 'twit_list' %}">View Tweeter Feed</a>
+                </div>
+                
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button class="btn btn-success m-2 mt-4" type="submit">Logout</button>
+                </form>
+            </div>
+
         </div>
         
     {% else %}
+    <div class="col-xs-1 text-center">
         <p>You are not logged in</p>
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'signup' %}">Signup</a>
+        <a class="btn btn-primary m-2" href="{% url 'login' %}">Login</a>
+        <a class="btn btn-primary m-2" href="{% url 'signup' %}">Signup</a>
+    </div>
     {% endif %}
 {% endblock content %}

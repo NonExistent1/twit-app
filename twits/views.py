@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
@@ -5,13 +6,12 @@ from django.urls import reverse_lazy
 
 from .models import Twit
 
-class TwitListView(ListView):
+class TwitListView(LoginRequiredMixin, ListView):
     """Twit list view"""
     model = Twit
     template_name = "twit_list.html"
 
-
-class TwitCreateView(CreateView):
+class TwitCreateView(LoginRequiredMixin, CreateView):
     """Twit Create View"""
 
     model = Twit
@@ -25,7 +25,7 @@ class TwitCreateView(CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
     
-class TwitUpdateView(UpdateView):
+class TwitUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """Twit Update View"""
 
     model = Twit
@@ -35,9 +35,17 @@ class TwitUpdateView(UpdateView):
     )
     template_name = "twit_edit.html"
 
-class TwitDeleteView(DeleteView):
+    def test_func(self):
+        obj = self.get_object()
+        return obj.author == self.request.user
+
+class TwitDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """Twit Delete View"""
 
     model = Twit 
     template_name = "twit_delete.html"
     success_url = reverse_lazy("twit_list")
+
+    def test_func(self):
+        obj = self.get_object()
+        return obj.author == self.request.user

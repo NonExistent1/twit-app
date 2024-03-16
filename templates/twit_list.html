@@ -10,10 +10,12 @@
                 <div class="float-start">
                     By {{ twit.author }} | {{ twit.updated }} 
                 </div>
+                {% if twit.author == user %}
                 <div class="float-end">
-                    <a class="btn btn-info" href="{% url 'twit_edit' twit.pk %}">Edit</a>
+                    <a class="btn btn-primary" href="{% url 'twit_edit' twit.pk %}">Edit</a>
                    <a class="btn btn-danger" href="{% url 'twit_delete' twit.pk %}">Delete</a>
                 </div>
+                {% endif %}
                 
             </span>
         </div>

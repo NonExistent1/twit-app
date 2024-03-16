@@ -20,11 +20,8 @@ class Twit(models.Model):
         """String Method"""
         return self.body
     
-    def get_absolute_url(self):
-        return reverse("twit_list")
-    
     class Meta:
-        ordering =['-updated']
+        ordering = ['-updated']
 
 
 
