@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 
-{% block title %}Twits{% endblock title %}
+{% block title %}Twit{% endblock title %}
 
 {% block content %}
-    {% for twit in twit_list %}
     <div class="card">
         <div class="card-header">
             <span class="text-muted">
@@ -13,7 +12,7 @@
                 {% if twit.author == user %}
                 <div class="float-end">
                     <a class="btn btn-primary" href="{% url 'twit_edit' twit.pk %}">Edit</a>
-                   <a class="btn btn-danger" href="{% url 'twit_delete' twit.pk %}">Delete</a>
+                <a class="btn btn-danger" href="{% url 'twit_delete' twit.pk %}">Delete</a>
                 </div>
                 {% endif %}
                 
@@ -29,7 +28,7 @@
                 <h6>Comments</h6>
             </div>
             <div class="card-body">
-                {% for comment in twit.comment_set.all|slice:":3" %}
+                {% for comment in twit.comment_set.all %}
                 <p>
                     <span class="font-weight-bold">
                         {{ comment.author }} &middot;
@@ -38,11 +37,7 @@
                 </p>
                 {% endfor %}
             </div>
-            <div class="card-footer">
-                <a class="btn" href="{% url 'twit_detail' twit.pk %}">View all Comments</a>
-            </div>
         </div>
     </div>
-    <br>
-    {% endfor %}
+    <a class="btn btn-primary mt-3" href="{% url 'twit_list' %}">Return</a>
 {% endblock content %}

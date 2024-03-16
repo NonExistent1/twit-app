@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
 
@@ -10,6 +10,12 @@ class TwitListView(LoginRequiredMixin, ListView):
     """Twit list view"""
     model = Twit
     template_name = "twit_list.html"
+
+class TwitDetailView(LoginRequiredMixin, DetailView):
+    """Twit Detail View"""
+
+    model = Twit
+    template_name = "twit_detail.html"
 
 class TwitCreateView(LoginRequiredMixin, CreateView):
     """Twit Create View"""

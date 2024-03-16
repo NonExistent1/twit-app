@@ -23,6 +23,19 @@ class Twit(models.Model):
     class Meta:
         ordering = ['-updated']
 
+class Comment(models.Model):
+    """Comment Model"""
 
+    twit = models.ForeignKey(Twit, on_delete=models.CASCADE)
+    body = models.CharField(max_length=140)
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
 
-# Create your models here.
+    def __str__(self):
+        """Convert to string"""
+        return self.body
+    
+    def get_absolute_url(self):
+        return reverse("article_list")
