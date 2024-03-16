@@ -1,5 +1,5 @@
-from django.views.generic import ListView, DetailView
-from django.views.generic.edit import UpdateView, DeleteView
+from django.views.generic import ListView
+from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
 
 
@@ -10,12 +10,21 @@ class TwitListView(ListView):
     model = Twit
     template_name = "twit_list.html"
 
-class TwitDetailView(DetailView):
-    """Twit Detail View"""
+
+class TwitCreateView(CreateView):
+    """Twit Create View"""
 
     model = Twit
-    template_name = "twit_detail.html"
+    fields = (
+        "body",
+        "image_url",
+    )
+    template_name = "twit_create.html"
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+    
 class TwitUpdateView(UpdateView):
     """Twit Update View"""
 

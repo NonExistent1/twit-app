@@ -124,5 +124,7 @@ https://forum.djangoproject.com/t/showing-method-not-allowed-get-users-logout/26
 
 https://forum.djangoproject.com/t/cant-change-type-attribute-in-django-crispy-forms/10054/2
 
+https://stackoverflow.com/questions/6540032/sorting-related-items-in-a-django-template
+
 ## Known Problems, Issues, And/Or Errors in the Program
 
