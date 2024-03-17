@@ -3,10 +3,12 @@
 {% block title %}Twit - Delete{% endblock title %}
 
 {% block content %}
-    <h1>Delete</h1>
-    <form action="" method="POST">
-        {% csrf_token %}
-        <p>Are you sure you want to delete "{{ twit.title }}"?</p>
-        <button class="btn btn-danger ml-2" type="submit">Confirm</button>
-    </form>
+        <h1 style="display:flex;justify-content: center; align-items: center;">Delete Post?</h1>
+        <form  action="" method="POST">
+            {% csrf_token %}
+            <p style="display:flex;justify-content: center; align-items: center;">Are you sure you want to delete "{{ twit.body }}"?</p>
+            <div style="display:flex;justify-content: center; align-items: center;">
+                <button class="btn btn-danger ml-2" type="submit">Confirm</button>
+            </div>
+        </form>
 {% endblock content %}

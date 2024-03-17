@@ -1,51 +1,51 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block title %}Twits{% endblock title %}
 
 {% block content %}
     {% for twit in twit_list %}
-    <div class="card">
-        <div class="card-header">
-            <span class="text-muted">
-                <div class="float-start">
-                    By {{ twit.author }} | {{ twit.updated }} 
-                </div>
-                {% if twit.author == user %}
-                    <div class="float-end">
-                        <a class="btn btn-primary" href="{% url 'twit_edit' twit.pk %}">Edit</a>
-                       <a class="btn btn-danger" href="{% url 'twit_delete' twit.pk %}">Delete</a>
-                    </div>
-                {% endif %}
-            </span>
-        </div>
-        <div class="card-body">
-            <h6 class="mb-0">{{ twit.body }}</h6>
-            <br>
-            <img class="img-fluid img-thumbnail" style="height:250px;" src="{{ twit.image_url }}">            
-        </div>
-        <div class="card m-3">
+        <div class="card">
             <div class="card-header">
-                <h6 class="m-2">Comments</h6>
+                <span class="text-muted">
+                    <div class="float-start">
+                        By {{ twit.author }} | {{ twit.updated }} 
+                    </div>
+                    {% if twit.author == user %}
+                        <div class="float-end">
+                            <a class="btn btn-primary" href="{% url 'twit_edit' twit.pk %}">Edit</a>
+                        <a class="btn btn-danger" href="{% url 'twit_delete' twit.pk %}">Delete</a>
+                        </div>
+                    {% endif %}
+                </span>
             </div>
             <div class="card-body">
-                {% for comment in twit.comment_set.all|slice:":3" %}
-                <p>
-                    <span class="font-weight-bold">
-                        {{ comment.author }} &middot;
-                    </span>
-                    {{ comment }}
-                </p>
-                {% endfor %}
+                <h6 class="mb-0">{{ twit.body }}</h6>
+                <br>
+                <img class="img-fluid img-thumbnail" style="height:250px;" src="{{ twit.image_url }}">            
             </div>
-            <div class="card-footer">
-                <a class="btn" href="{% url 'twit_detail' twit.pk %}">View all Comments</a>
+            <div class="card m-3">
+                <div class="card-header">
+                    <h6 class="m-2">Comments</h6>
+                </div>
+                <div class="card-body">
+                    {% for comment in twit.comment_set.all|slice:":3" %}
+                        <p>
+                            <span class="font-weight-bold">
+                                {{ comment.author }} &middot;
+                            </span>
+                            {{ comment }}
+                        </p>
+                    {% endfor %}
+                </div>
+                <div class="card-footer">
+                    <a class="btn" href="{% url 'twit_detail' twit.pk %}">View all Comments</a>
+                </div>
+            </div>
+            <div>
+                <a class="btn btn-primary m-2 mt-1" href="#">Like</a>
+                <a class="btn btn-primary m-2 mt-1" href="{% url 'twit_detail' twit.pk %}">Comment</a>
             </div>
         </div>
-        <div>
-            <a class="btn btn-primary m-2 mt-1" href="#">Like</a>
-            <a class="btn btn-primary m-2 mt-1" href="#">Comment</a>
-        </div>
-    </div>
-    <br>
+        <br>
     {% endfor %}
 {% endblock content %}
