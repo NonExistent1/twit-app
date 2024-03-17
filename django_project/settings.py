@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     # Local First Party
     'accounts.apps.AccountsConfig',
-    'pages.apps.PagesConfig',
     'twits.apps.TwitsConfig',
 ]
 
