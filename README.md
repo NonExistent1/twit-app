@@ -125,5 +125,8 @@ https://forum.djangoproject.com/t/cant-change-type-attribute-in-django-crispy-fo
 https://stackoverflow.com/questions/6540032/sorting-related-items-in-a-django-template
 
 https://stackoverflow.com/questions/69993285/how-to-display-the-latest-3-items-in-django
+
+My coworker Morgan for the action part and some styling help
+
 ## Known Problems, Issues, And/Or Errors in the Program
 

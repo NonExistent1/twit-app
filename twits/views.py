@@ -14,6 +14,13 @@ class TwitListView(LoginRequiredMixin, ListView):
     model = Twit
     template_name = "twit_list.html"
 
+    def get_context_data(self, **kwargs):
+        """Get the context data for the template"""
+        context = super().get_context_data(**kwargs)
+        context['form'] = CommentForm()
+        return context
+
+
 class TwitDetailView(LoginRequiredMixin, View):
     """Article Detail View"""
 

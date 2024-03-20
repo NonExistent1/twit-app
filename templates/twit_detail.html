@@ -4,6 +4,20 @@
 {% block title %}Twit{% endblock title %}
 
 {% block content %}
+    <!-- Style -->
+    <style>
+        #div_id_body{
+            display:flex;
+            flex-grow:2;
+            margin-bottom:0px !important;
+        }
+        form {
+            display: flex;
+            margin-top: 10px;
+            margin-block-end: 10px !important; 
+        }
+    </style>
+
     <!-- Post -->
     <div class="card">
         <div class="card-header">
@@ -27,13 +41,11 @@
         </div>
         <div class="card m-3">
             <div class="card-header">
-                <p style="display:inline">
-                    <form action="" method="POST">
-                        {% csrf_token %}
-                        {{ form|crispy}}
-                        <button class="btn btn-success m-0" type="submit">Post Comment</button>
-                    </form>
-                </p>
+                <form style='display:flex;' action="" method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy}}
+                    <button class="btn btn-success m-2" type="submit">Post Comment</button>
+                </form>
             </div>
         </div>
         <!-- Comments -->
