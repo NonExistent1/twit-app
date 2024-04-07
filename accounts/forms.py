@@ -23,10 +23,17 @@ class CustomUserCreationForm(UserCreationForm):
 class CustomUserChangeForm(UserChangeForm):
     """Custom User Change Form"""
 
+
     class Meta:
         model = CustomUser
         fields = (
             "username",
             "email",
+            "first_name",
+            "last_name",
             "date_of_birth",
         )
+        widgets = {
+            "date_of_birth": DateInput(),
+        }
+        exclude = ('password',)

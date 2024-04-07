@@ -17,12 +17,12 @@
             margin-block-end: 10px !important; 
         }
     </style>
-    {% for twit in twit_list %}
+    {% for twit in all_twits_by_user %}
         <div class="card">
             <div class="card-header">
                 <span class="text-muted">
                     <div class="float-start">
-                        By <a href="{% url 'account_view' twit.author.pk %}">{{ twit.author }}</a> | {{ twit.updated }} 
+                        By {{ twit.author }} | {{ twit.updated }} 
                     </div>
                     {% if twit.author == user %}
                         <div class="float-end">
@@ -67,7 +67,7 @@
                         {% for comment in twit.comment_set.all|slice:":3" %}
                             <p>
                                 <span class="font-weight-bold">
-                                    <a href="{% url 'account_view' comment.author.pk %}">{{ comment.author }}</a> &middot;
+                                    {{ comment.author }} &middot;
                                 </span>
                                 {{ comment }}
                             </p>

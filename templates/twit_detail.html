@@ -23,7 +23,7 @@
         <div class="card-header">
             <span class="text-muted">
                 <div class="float-start">
-                    By {{ twit.author }} | {{ twit.updated }} 
+                    By <a href="{% url 'account_view' twit.author.pk %}">{{ twit.author }}</a> | {{ twit.updated }} 
                 </div>
                 {% if twit.author == user %}
                 <div class="float-end">
@@ -57,7 +57,7 @@
                 {% for comment in twit.comment_set.all %}
                 <p>
                     <span class="font-weight-bold">
-                        {{ comment.author }} &middot;
+                        <a href="{% url 'account_view' comment.author.pk %}">{{ comment.author }}</a> &middot;
                     </span>
                     {{ comment }}
                 </p>

@@ -143,3 +143,12 @@ class TwitLikeView(LoginRequiredMixin, View):
                 "success": True
             }
         )
+    
+class AccountView(LoginRequiredMixin, ListView):
+    """Public Account view"""
+    model = Twit
+    template_name = "account_view.html"
+    context_object_name = 'all_twits_by_user'
+
+    def get_queryset(self):
+        return Twit.objects.filter(author=self.kwargs['pk'])
