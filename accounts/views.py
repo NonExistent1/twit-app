@@ -1,4 +1,9 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+"""
+Jordyn Kuhn
+CIS 218
+4-7-2024
+"""from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
 

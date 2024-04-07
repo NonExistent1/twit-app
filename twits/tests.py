@@ -1,3 +1,8 @@
+"""
+Jordyn Kuhn
+CIS 218
+4-7-2024
+"""
 from django.test import TestCase
 
 from django.contrib.auth import get_user_model

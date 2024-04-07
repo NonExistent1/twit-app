@@ -1,4 +1,9 @@
 """
+Jordyn Kuhn
+CIS 218
+4-7-2024
+"""
+"""
 URL configuration for django_project project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:

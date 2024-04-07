@@ -1,3 +1,8 @@
+"""
+Jordyn Kuhn
+CIS 218
+4-7-2024
+"""
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 

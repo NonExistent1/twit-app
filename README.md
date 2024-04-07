@@ -2,7 +2,7 @@
 
 ## Author
 
-
+Jordyn Kuhn
 
 ## Description
 
@@ -129,4 +129,4 @@ https://stackoverflow.com/questions/69993285/how-to-display-the-latest-3-items-i
 My coworker Morgan for the action part and some styling help
 
 ## Known Problems, Issues, And/Or Errors in the Program
-
+Not Ready for Heroku Deployment, Tests are not set up correctly yet

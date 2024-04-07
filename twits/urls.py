@@ -1,3 +1,8 @@
+"""
+Jordyn Kuhn
+CIS 218
+4-7-2024
+"""
 from django.urls import path
 
 from .views import (

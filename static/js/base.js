@@ -1,3 +1,8 @@
+
+// Jordyn Kuhn
+// CIS 218
+// 4-7-2024
+
 $(document).ready(function(){
     $(".like_button").click(function(event){
         // The work we want to do on click

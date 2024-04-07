@@ -1,3 +1,8 @@
+"""
+Jordyn Kuhn
+CIS 218
+4-7-2024
+"""
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
