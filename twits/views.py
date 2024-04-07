@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.http import HttpResponse, JsonResponse
 from django.views import View
 from django.views.generic import ListView, DetailView, FormView
 from django.views.generic.detail import SingleObjectMixin
@@ -22,7 +23,7 @@ class TwitListView(LoginRequiredMixin, ListView):
 
 
 class TwitDetailView(LoginRequiredMixin, View):
-    """Article Detail View"""
+    """Twit Detail View"""
 
     def get(self, request, *args, **kwargs):
         """Doing GET request"""
@@ -113,3 +114,32 @@ class TwitDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         obj = self.get_object()
         return obj.author == self.request.user
+    
+class TwitLikeView(LoginRequiredMixin, View):
+    """Twit Like View"""
+
+    def get(self, request, *args, **kwargs):
+        """ Get Request """
+
+        # Get out the data from the GET request
+        twit_id = request.GET.get("twit_id", None)
+        twit_action = request.GET.get("twit_action", None)
+
+        if not twit_id or not twit_action:
+            return JsonResponse({
+                    "success": False,
+                })
+        
+        twit = Twit.objects.get(id=twit_id)
+        if twit_action == "like":
+            # Do like stuff
+            twit.likes.add(request.user)
+        else:
+            # Do unlike stuff
+            twit.likes.remove(request.user)
+
+        return JsonResponse(
+            {
+                "success": True
+            }
+        )

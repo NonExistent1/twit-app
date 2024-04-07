@@ -16,12 +16,22 @@ class Twit(models.Model):
         related_name = "twits"
     )
 
+    likes = models.ManyToManyField(
+        settings.AUTH_USER_MODEL,
+        related_name="liked_twits",
+        blank=True,
+    )
+
     def __str__(self):
         """String Method"""
         return self.body
     
     def get_absolute_url(self):
         return reverse("twit_list")
+    
+    def get_like_url(self):
+        """Get like URL based on PK"""
+        return reverse("twit_like", kwargs={"pk": self.pk})
     
     class Meta:
         ordering = ['-updated']
